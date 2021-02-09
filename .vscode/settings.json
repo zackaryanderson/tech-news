@@ -1,0 +1,8 @@
+{
+    "editor.quickSuggestionsDelay": 1073741824,
+    "editor.suggest.maxVisibleSuggestions": 1,
+    "editor.snippetSuggestions": "none",
+    "editor.quickSuggestions": null,
+    "editor.hover.enabled": false,
+    "editor.parameterHints": false,
+}
