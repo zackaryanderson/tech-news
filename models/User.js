@@ -10,7 +10,7 @@ User.init(
         //define an id column
         id: {
             //use the special sequelize datatypes object to provide what type of data it is 
-            type: DataTypes.Integer,
+            type: DataTypes.INTEGER,
             allowNull: false,
             //instruct that this is the primary key
             primaryKey: true,
@@ -24,7 +24,7 @@ User.init(
         },
         //define an email column
         email: {
-            type: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             //there cannot be any duplicate emails in this table
             unique: true,
@@ -47,7 +47,7 @@ User.init(
         //pass in our imported sequelize connection (the direct connection to our database
         sequelize,
         //dont automatically create createdAt/updatedAt timestamp fields
-        timestamps: fase,
+        timestamps: false,
         //dont plralize name of database table
         freezeTableName: true,
         //use underscores instead of camel-casing
