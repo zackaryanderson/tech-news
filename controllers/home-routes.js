@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
+    console.log(req.session);
     Post.findAll({
         //query config
         attributes: ['id', 'post_url', 'title', 'created_at', [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']],
@@ -25,7 +26,7 @@ router.get('/', (req, res) => {
         ]
     })
         .then(dbPostData => {
-            console.log(dbPostData[0].get({ plain: true }));
+            //console.log(dbPostData[0].get({ plain: true }));  // this posts the first post
             const posts = dbPostData.map(post => post.get({ plain: true }));
             res.render('homepage', { posts })
         })
@@ -34,5 +35,14 @@ router.get('/', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+router.get('/login', (req,res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
 
 module.exports = router;
