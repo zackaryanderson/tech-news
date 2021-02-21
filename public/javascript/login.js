@@ -1,10 +1,10 @@
 async function signupFormHandler(event) {
     event.preventDefault();
-    //get values from the html 
+
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    //send a post request to the api with the new user data
+
     if (username && email && password) {
         const response = await fetch('/api/users', {
             method: 'post',
@@ -15,10 +15,9 @@ async function signupFormHandler(event) {
             }),
             headers: { 'Content-Type': 'application/json' }
         });
-        // check the response status
+
         if (response.ok) {
-            window.alert('New User Created')
-            window.location.reload();
+            document.location.replace('/dashboard/');
         } else {
             alert(response.statusText);
         }
@@ -42,12 +41,13 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/dashboard/');
         } else {
             alert(response.statusText);
         }
     }
 }
+
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
