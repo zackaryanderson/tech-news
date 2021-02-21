@@ -22,7 +22,7 @@
   }
   
   button {
-    background-color: #225ca3;
+    background-color: #fd5e53;
     border: 0;
     padding: 1%;
     color: white;
@@ -33,7 +33,7 @@
   }
   
   button:hover {
-    background-color: #3486eb;
+    background-color: #fd539d;
   }
   
   .post-list {
@@ -83,7 +83,7 @@
   }
   
   header h1 {
-    font-size: 1em;
+    font-size: 1.5em;
   }
   
   main {
@@ -97,7 +97,7 @@
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: #fd5e53;
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
@@ -106,7 +106,7 @@
   
   .btn-no-style:hover {
     background: none;
-    color: #3486eb;
+    color: #fd539d;
   }
   
   .delete-post-btn {
