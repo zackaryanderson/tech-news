@@ -72,7 +72,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create a user
-router.post('/', withAuth,(req, res) => {
+router.post('/', withAuth, (req, res) => {
     Post.create({
         title: req.body.title,
         post_url: req.body.post_url,
@@ -86,20 +86,18 @@ router.post('/', withAuth,(req, res) => {
 });
 
 //upvote a post
-router.put('/upvote', withAuth,(req, res) => {
+router.put('/upvote', withAuth, (req, res) => {
     // custom static method created in models/Post.js
-    if (req.session) {
-      Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
+            console.log(err);
+            res.status(500).json(err);
         });
-    }
-  });
+});
 
 //update a user
-router.put('/:id', withAuth,(req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
             title: req.body.title
@@ -124,7 +122,7 @@ router.put('/:id', withAuth,(req, res) => {
 });
 
 //delete a user
-router.delete('/:id', withAuth,(req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id
